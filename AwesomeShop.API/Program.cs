@@ -1,3 +1,4 @@
+using AwesomeShop.Application;
 
 namespace AwesomeShop.API
 {
@@ -13,6 +14,8 @@ namespace AwesomeShop.API
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+            //Add services Mediator
+            builder.Services.AddHandlers();
 
             var app = builder.Build();
 

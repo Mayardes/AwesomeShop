@@ -2,7 +2,7 @@
 
 namespace AwesomeShop.Domain.Repositories
 {
-    internal interface IOrderRepository
+    public interface IOrderRepository
     {
         Task<Order> GetByIdAsync (Guid id);
         Task AddAsync (Order order);
