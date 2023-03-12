@@ -1,5 +1,7 @@
 using AwesomeShop.Application;
 using AwesomeShop.Infraestructure;
+using Swashbuckle.AspNetCore.Filters;
+using System.Reflection;
 
 namespace AwesomeShop.API
 {
@@ -19,6 +21,10 @@ namespace AwesomeShop.API
             builder.Services.AddHandlers();
             builder.Services.AddMongo();
             builder.Services.AddRepositories();
+            builder.Services.AddSwaggerExamplesFromAssemblies(Assembly.GetEntryAssembly());
+            builder.Services.AddSwaggerGen(options => {
+                options.ExampleFilters();
+            });
 
             var app = builder.Build();
 

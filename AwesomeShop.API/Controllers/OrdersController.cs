@@ -1,12 +1,14 @@
-﻿using AwesomeShop.Application.Command;
+﻿using AwesomeShop.API.Controllers.RequestOrderExamples;
+using AwesomeShop.Application.Command;
 using AwesomeShop.Application.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Swashbuckle.AspNetCore.Filters;
 
 namespace AwesomeShop.API.Controllers
 {
     [ApiController]
-    [Route("v1/order")]
+    [Route("/api/custumers/{custumerId}/orders/")]
     public class OrdersController : ControllerBase
     {
         private readonly IMediator _mediator;
@@ -29,6 +31,7 @@ namespace AwesomeShop.API.Controllers
         }
 
         [HttpPost]
+        [SwaggerRequestExample(typeof(AddOrderCommand), typeof(AddOrderCommandRequestExample))]
         public async Task<IActionResult> Post([FromBody] AddOrderCommand command)
         {
             var id = await _mediator.Send(command);
