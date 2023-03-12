@@ -1,4 +1,5 @@
 using AwesomeShop.Application;
+using AwesomeShop.Infraestructure;
 
 namespace AwesomeShop.API
 {
@@ -16,6 +17,8 @@ namespace AwesomeShop.API
             builder.Services.AddSwaggerGen();
             //Add services Mediator
             builder.Services.AddHandlers();
+            builder.Services.AddMongo();
+            builder.Services.AddRepositories();
 
             var app = builder.Build();
 
